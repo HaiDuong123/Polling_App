@@ -5,4 +5,4 @@ const isLocal = window.location.hostname === "localhost" || window.location.host
 // Tự động chọn link dựa trên môi trường
 export const API_URL = isLocal 
   ? "http://localhost:5000"  // Link khi chạy ở máy nhà
-  : "https://polling-app-backend-xv12.onrender.com"; // Link khi đưa lên mạng (Thay link Render của bạn vào đây)
+  : "https://polling-app-h32c.onrender.com"; // Link khi đưa lên mạng (Thay link Render của bạn vào đây)

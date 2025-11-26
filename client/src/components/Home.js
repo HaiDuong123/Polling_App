@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../apiConfig';
 
 function Home() {
   const [polls, setPolls] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/polls')
+    axios.get(`${API_URL}/api/polls`)
       .then(res => setPolls(res.data))
       .catch(err => console.log(err));
   }, []);

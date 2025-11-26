@@ -13,10 +13,12 @@ import {
   Legend,
 } from 'chart.js';
 
+import { API_URL } from '../apiConfig';
+
 // Đăng ký ChartJS
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect(API_URL);
 
 function PollDetail() {
   const { id } = useParams();
@@ -32,7 +34,7 @@ function PollDetail() {
     }
 
     // 2. Lấy dữ liệu
-    axios.get(`http://localhost:5000/api/polls/${id}`)
+    axios.get(`${API_URL}/api/polls/${id}`)
       .then(res => setPoll(res.data))
       .catch(err => console.error(err));
 

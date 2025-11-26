@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../apiConfig';
 
 function CreatePoll() {
   const [question, setQuestion] = useState('');
@@ -21,7 +22,7 @@ function CreatePoll() {
     const validOptions = options.filter(opt => opt.trim() !== '');
     if (!question || validOptions.length < 2) return alert("Cần câu hỏi và ít nhất 2 lựa chọn!");
 
-    await axios.post('http://localhost:5000/api/polls', {
+    await axios.post(`${API_URL}/api/polls`, {
       question,
       options: validOptions
     });

@@ -6,8 +6,14 @@ const { Server } = require('socket.io');
 const Poll = require('./models/poll');
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+app.use(cors({
+  origin: [
+    "http://localhost:3000", 
+    "http://localhost:3001",
+    "https://pollingvoteapp.netlify.app" // Link Netlify của bạn
+  ],
+  credentials: true
+}));app.use(express.json());
 
 // --- 1. KẾT NỐI DATABASE ---
 // Lưu ý: Thay 'mongodb://localhost:27017/pollingDB' bằng URL MongoDB của bạn nếu dùng Cloud
@@ -48,7 +54,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     // Thêm cổng 3001 vào danh sách cho phép
-    origin: ["http://localhost:3000", "http://localhost:3001"], 
+    origin: ["http://localhost:3000", "http://localhost:3001","https://pollingvoteapp.netlify.app"], 
     methods: ["GET", "POST"]
   }
 });
@@ -84,5 +90,5 @@ io.on('connection', (socket) => {
     }
   });
 });
-
-server.listen(5000, () => console.log('Server running on port 5000'));
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -1,1 +1,172 @@
-body{font-family: Arial, sans-serif; padding:20px;} .app{max-width:900px;margin:0 auto;} .create input{display:block;margin:6px 0;padding:8px;width:100%;} .poll{border:1px solid #ddd;padding:12px;margin:8px 0;border-radius:6px;} .options button{margin:4px;} .meta{margin-top:8px;}
+/* --- CÀI ĐẶT CHUNG --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif; /* Font chữ hiện đại */
+  background-color: #f0f2f5; /* Màu nền xám nhẹ dịu mắt */
+  margin: 0;
+  color: #333;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* --- NAVBAR --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #4c6ef5; /* Màu xanh chủ đạo */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-create {
+  background: linear-gradient(135deg, #4c6ef5, #5c7cfa);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.btn-create:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(76, 110, 245, 0.4);
+}
+
+/* --- MAIN CONTENT --- */
+.main-content {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page-header h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #1c1e21;
+}
+
+.page-header p {
+  color: #65676b;
+  font-size: 16px;
+}
+
+/* --- GRID LAYOUT CHO CÁC THẺ --- */
+.poll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Tự động chia cột responsive */
+  gap: 25px;
+}
+
+/* --- POLL CARD (QUAN TRỌNG NHẤT) --- */
+.poll-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  border: 1px solid #eee;
+  display: block;
+}
+
+.poll-card:hover {
+  transform: translateY(-8px); /* Nhấc thẻ lên khi di chuột */
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  border-color: #4c6ef5;
+}
+
+.card-content {
+  padding: 25px;
+}
+
+.card-icon {
+  font-size: 30px;
+  color: #4c6ef5;
+  margin-bottom: 15px;
+  background: #edf2ff;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  line-height: 1.4;
+  color: #333;
+  min-height: 50px; /* Để các thẻ đều nhau */
+}
+
+/* --- CARD FOOTER --- */
+.card-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 15px;
+  font-size: 14px;
+}
+
+.likes {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #666;
+  font-weight: 500;
+}
+
+.heart-icon {
+  color: #ff6b6b;
+}
+
+.action-text {
+  color: #4c6ef5;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  opacity: 0; /* Ẩn đi */
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.poll-card:hover .action-text {
+  opacity: 1; /* Hiện lên khi hover */
+  transform: translateX(0);
+}
+
+/* --- EMPTY STATE & LOADING --- */
+.loading, .empty-state {
+  text-align: center;
+  font-size: 18px;
+  color: #888;
+  padding: 50px;
+}
